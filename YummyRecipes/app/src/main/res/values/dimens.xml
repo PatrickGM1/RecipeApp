@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default text size -->
+    <dimen name="button_text_size">14sp</dimen>
+
+    <!-- Larger text size for bigger screens -->
+    <dimen name="button_text_size_large">16sp</dimen>
+</resources>
