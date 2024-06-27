@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">YummyRecipes</string>
+
+    <string-array name="units_array">
+        <item>pcs</item>
+        <item>kg</item>
+        <item>g</item>
+        <item>ml</item>
+        <item>l</item>
+    </string-array>
 </resources>

@@ -5,52 +5,38 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class FavoritesActivity extends AppCompatActivity {
 
     private Button homeButton, favoritesButton, shoppingListButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_favorites);
 
         homeButton = findViewById(R.id.homeButton);
         favoritesButton = findViewById(R.id.favoritesButton);
         shoppingListButton = findViewById(R.id.shoppingListButton);
 
-        setupBottomBar();
-
-        homeButton.setOnClickListener(view -> selectButton(homeButton));
-        favoritesButton.setOnClickListener(view -> {
-            selectButton(favoritesButton);
-            Intent intent = new Intent(MainActivity.this, FavoritesActivity.class);
+        selectButton(favoritesButton);
+        homeButton.setOnClickListener(view -> {
+            selectButton(homeButton);
+            Intent intent = new Intent(FavoritesActivity.this, MainActivity.class);
             startActivity(intent);
             overridePendingTransition(0, 0); // Remove animation
         });
-
         shoppingListButton.setOnClickListener(view -> {
             selectButton(shoppingListButton);
-            Intent intent = new Intent(MainActivity.this, ShoppingListActivity.class);
+            Intent intent = new Intent( FavoritesActivity.this, ShoppingListActivity.class);
             startActivity(intent);
             overridePendingTransition(0, 0); // Remove animation
-        });
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
         });
     }
 
     private void setupBottomBar() {
-        selectButton(homeButton);
+        selectButton(favoritesButton);
     }
 
     private void selectButton(Button selectedButton) {
